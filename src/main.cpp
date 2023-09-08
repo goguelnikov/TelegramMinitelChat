@@ -1,10 +1,11 @@
 /******************************************************************************
     A telegram terminal for Minitel ESP32 for my kids ;-)
-    https://hackaday.io/project/192211-minitel-telegram-client
+    hackaday : https://hackaday.io/project/192211-minitel-telegram-client
+    by goguelnikov
 
     Minitel ESP32 by iodeo
-    https://hackaday.io/project/180473-minitel-esp32
-    https://www.tindie.com/products/iodeo/minitel-esp32-dev-board/?utm_source=hackadayio&utm_medium=link&utm_campaign=project_buynow
+    hackaday : https://hackaday.io/project/180473-minitel-esp32
+    Tindie: https://www.tindie.com/products/iodeo/minitel-esp32-dev-board/?utm_source=hackadayio&utm_medium=link&utm_campaign=project_buynow
     github: https://github.com/iodeo/Minitel-ESP32 
     
     Minitel library by eserandour
