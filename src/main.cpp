@@ -48,6 +48,12 @@ String intro = "Moi - ";
 
 #define CHAT_ID "XXXXXXXXXXXXX"
 
+// to make the bot react to a specific group
+// - get the group ID by adding the @myidbot to the group
+// - send /getgroupid command 
+// - paste the ID in CHAT_ID variable
+// - make sure to have Privacy mode disabled for the bot in bot settings accessible in @botfather /mybots
+
 const unsigned long BOT_MTBS = 1000; // mean time between scan messages
 
 WiFiClientSecure secured_client;
@@ -149,32 +155,33 @@ void handleNewMessages(int numNewMessages) {
     Serial.print(F("From_name: "));
     String from_name = bot.messages[i].from_name;
 
-    // if (chat_id == CHAT_ID){
-    //   bot.sendMessage(chat_id, text, "");
-    // } else {
-    //   bot.sendMessage(chat_id, "Unauthorized", "");
-    // }
+    if (chat_id == CHAT_ID){
+      //bot.sendMessage(chat_id, text, "");
+      // Print the received message on Minitel
+      //minitel.moveCursorXY(14,24);  
+    
+      //eraseLines(text.length()/40);
+      minitel.println();
+      minitel.attributs(INVERSION_FOND);
+      //minitel.attributs(CARACTERE_BLEU);
+      minitel.attributs(CARACTERE_ROUGE);
+      
+      minitel.print(from_name);
+      minitel.print(" - ");
+      minitel.println(text);
+      minitel.attributs(CARACTERE_BLANC);
+      minitel.attributs(FOND_NORMAL);
+      //minitel.bip();
+      champVide(PREMIERE_LIGNE, NB_LIGNES);
+      minitel.print(intro);
+      minitel.print(texte);
+      //minitel.moveCursorXY(1,10);
+      //minitel.moveCursorReturn(1);
 
-    // Print the received message on Minitel
-    //minitel.moveCursorXY(14,24);  
-    
-    //eraseLines(text.length()/40);
-    minitel.println();
-    minitel.attributs(INVERSION_FOND);
-    //minitel.attributs(CARACTERE_BLEU);
-    minitel.attributs(CARACTERE_ROUGE);
-    
-    minitel.print(from_name);
-    minitel.print(" - ");
-    minitel.println(text);
-    minitel.attributs(CARACTERE_BLANC);
-    minitel.attributs(FOND_NORMAL);
-    minitel.bip();
-    champVide(PREMIERE_LIGNE, NB_LIGNES);
-    minitel.print(intro);
-    minitel.print(texte);
-    //minitel.moveCursorXY(1,10);
-    //minitel.moveCursorReturn(1);
+    } else {
+      bot.sendMessage(chat_id, "Unauthorized", "");
+    }
+
 
 
   }
